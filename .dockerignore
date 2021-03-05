@@ -1,0 +1,24 @@
+# Versioned but ignore
+docs
+scripts
+tools
+.*
+buildspec.yml
+eslint-local-rules.js
+docker-compose.*
+Dockerfile
+README*
+*example*
+
+# Yarn / NPM
+!.yarnrc.yml
+!.yarn/releases
+!.yarn/plugins
+node_modules
+
+# Local
+dist
+coverage
+logging.yml
+*.gql
+*.graphql

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "target": "es2019",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings"
+    ],
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "dist"]
+}

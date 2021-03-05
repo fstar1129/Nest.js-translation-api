@@ -1,0 +1,62 @@
+root: true
+plugins:
+  - '@seedcompany'
+extends:
+  - plugin:@seedcompany/nestjs
+rules:
+  no-console: error
+  '@typescript-eslint/naming-convention':
+    - warn
+    - selector: typeLike
+      format: [PascalCase]
+    - selector: interface
+      format: [PascalCase]
+      custom: # Forbid I prefixed type names
+        regex: ^I[A-Z].+$
+        match: false
+    - selector: memberLike
+      format: [camelCase]
+      leadingUnderscore: forbid
+      # allow `__typename` exception since it's a GQL standard.
+    - selector: property
+      filter: __typename
+      format: ~
+    - selector: property
+      format: [camelCase, PascalCase]
+      leadingUnderscore: forbid
+    - selector: enumMember
+      format: [PascalCase, UPPER_CASE]
+      leadingUnderscore: forbid
+    - selector: parameter
+      format: [camelCase]
+      leadingUnderscore: allow
+  no-restricted-imports:
+    - error
+    - paths:
+        - name: '@nestjs/cqrs'
+          message: Import from our core module instead
+        - name: '@nestjs/common'
+          importNames:
+            - BadRequestException
+            - HttpException
+            - UnauthorizedException
+            - MethodNotAllowedException
+            - NotFoundException
+            - ForbiddenException
+            - NotAcceptableException
+            - RequestTimeoutException
+            - ConflictException
+            - GoneException
+            - PayloadTooLargeException
+            - UnsupportedMediaTypeException
+            - UnprocessableEntityException
+            - InternalServerErrorException
+            - NotImplementedException
+            - HttpVersionNotSupportedException
+            - BadGatewayException
+            - ServiceUnavailableException
+            - GatewayTimeoutException
+          message: Use our exceptions in common folder instead
+
+  # TODO Enable this and fix errors (both types & logic changes will be needed)
+  '@typescript-eslint/no-unnecessary-condition': off
